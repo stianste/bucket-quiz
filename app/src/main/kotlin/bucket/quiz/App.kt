@@ -3,13 +3,8 @@
  */
 package bucket.quiz
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
-}
+import io.javalin.Javalin
 
 fun main() {
-    println(App().greeting)
+  val app = Javalin.create().get("/") { ctx -> ctx.result("Hello World") }.start(7070)
 }
