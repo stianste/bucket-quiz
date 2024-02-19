@@ -3,8 +3,12 @@
  */
 package bucket.quiz
 
+import bucket.quiz.models.ApplicationRoute
+import bucket.quiz.models.QuizCategory
 import io.javalin.Javalin
 
 fun main() {
-  val app = Javalin.create().get("/") { ctx -> ctx.result("Hello World") }.start(7070)
+  Javalin.create()
+    .get("${ApplicationRoute.QUESTION.route}/category/all") { it.json(QuizCategory.values()) }
+    .start(7070)
 }
